@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Shore — GTA-style cover maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls">
+    <h1>Neon Shore</h1>
+    <p class="tag">Your photo, a caption, a GTA-style cover. Everything stays on your machine — nothing is uploaded.</p>
+
+    <div class="group">
+      <span class="label">Photos</span>
+      <label class="file">Add photos <input id="photo" type="file" accept="image/*" multiple></label>
+      <button id="load-sample" type="button">Load the two sample photos</button>
+      <div id="photos" class="chips"></div>
+      <p class="hint">Click a photo chip to put it in the selected panel. Click a panel in the preview to select it.</p>
+    </div>
+
+    <div class="group">
+      <span class="label">Layout</span>
+      <div class="rows" id="layouts">
+        <button type="button" data-layout="grid4">Four-panel grid</button>
+        <button type="button" data-layout="hero3">Hero and three</button>
+        <button type="button" data-layout="full">Full bleed</button>
+        <button type="button" data-layout="grid9">Nine-panel grid</button>
+        <button type="button" data-layout="tilted">Tilted snapshot</button>
+        <button type="button" data-layout="story">Story</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <span class="label">Grade</span>
+      <div class="rows" id="grades">
+        <button type="button" data-grade="sunset">Sunset</button>
+        <button type="button" data-grade="neon">Neon</button>
+        <button type="button" data-grade="vice">Vice</button>
+        <button type="button" data-grade="golden">Golden hour</button>
+        <button type="button" data-grade="mono">Monochrome</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <span class="label">Caption</span>
+      <label>Title <input id="title" type="text" maxlength="40" value="Neon Shore"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="60" value="a night on the coast"></label>
+      <label>Heat <input id="heat" type="range" min="0" max="5" step="1" value="4"></label>
+      <label>Badge ribbon <input id="badge" type="text" maxlength="24" value="Launch week"></label>
+    </div>
+
+    <div class="group">
+      <span class="label">Finish</span>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+      <div class="rows">
+        <button id="undo" type="button">Undo</button>
+        <button id="redo" type="button">Redo</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <span class="label">Export size</span>
+      <div class="rows" id="sizes">
+        <button type="button" data-size="square">1080 x 1080</button>
+        <button type="button" data-size="portrait">1080 x 1350</button>
+        <button type="button" data-size="wide">1920 x 1080</button>
+      </div>
+      <div class="rows">
+        <button id="export-square" type="button">Export 1080 x 1080</button>
+        <button id="export-portrait" type="button">Export 1080 x 1350</button>
+        <button id="export-wide" type="button">Export 1920 x 1080</button>
+        <button id="export-all" type="button" class="primary">Export all three</button>
+      </div>
+      <p id="status" role="status"></p>
+    </div>
+  </section>
+  <section class="stage">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+    <p id="panel-info" role="status"></p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
